@@ -798,7 +798,15 @@ namespace AppodealAds.Unity.iOS
         public void validateAppStoreInAppPurchase(IAppStoreInAppPurchase purchase, IInAppPurchaseValidationListener listener)
         {
             inAppPurchaseValidationListener = listener;
-            AppodealObjCBridge.AppodealValidateInAppPurchase(purchase.getProductId(), purchase.getPrice(), purchase.getCurrency(), purchase.getTransactionId(), purchase.getAdditionalParameters(), (int) purchase.getPurchaseType(), inAppPurchaseValidationSucceeded, inAppPurchaseValidationFailed);
+            AppodealObjCBridge.AppodealValidateInAppPurchase(
+                new InAppPurchaseData(
+                purchase.getProductId(), 
+                purchase.getPrice(), 
+                purchase.getCurrency(), 
+                purchase.getTransactionId(), 
+                purchase.getAdditionalParameters(), 
+                (int) purchase.getPurchaseType()),
+                inAppPurchaseValidationSucceeded, inAppPurchaseValidationFailed);
         }
 
         public void destroy(int adType)

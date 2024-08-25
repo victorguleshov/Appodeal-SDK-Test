@@ -34,6 +34,26 @@ namespace AppodealAds.Unity.iOS
     internal delegate void InAppPurchaseValidationSucceededCallback(string json);
 
     internal delegate void InAppPurchaseValidationFailedCallback(string error);
+    
+    internal struct InAppPurchaseData
+    {
+        public string ProductIdentifier { get; }
+        public string Price { get; }
+        public string Currency { get; }
+        public string TransactionId { get; }
+        public string AdditionalParams { get; }
+        public int Type { get; }
+
+        public InAppPurchaseData(string productId, string price, string currency, string transactionId, string additionalParameters, int purchaseType)
+        {
+            ProductIdentifier = productId;
+            Price = price;
+            Currency = currency;
+            TransactionId = transactionId;
+            AdditionalParams = additionalParameters;
+            Type = purchaseType;
+        }
+    }
 
     internal static class AppodealObjCBridge
     {
@@ -195,12 +215,7 @@ namespace AppodealAds.Unity.iOS
 
         [DllImport("__Internal")]
         internal static extern void AppodealValidateInAppPurchase(
-            string productIdentifier,
-            string price,
-            string currency,
-            string transactionId,
-            string additionalParams,
-            int type,
+            InAppPurchaseData purchaseData,
             InAppPurchaseValidationSucceededCallback success,
             InAppPurchaseValidationFailedCallback failure);
 
