@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using ConsentManager.Common;
@@ -30,6 +31,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         [SerializeField] public Button btnShowRewardedVideo;
         [SerializeField] public GameObject consentManagerPanel;
         [SerializeField] public GameObject appodealPanel;
+        [SerializeField] public Text versionText;
 
         #endregion
 
@@ -61,6 +63,17 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
             consentManager = ConsentManager.getInstance();
             consentManager.setStorage(ConsentManager.Storage.SHARED_PREFERENCE);
+
+            versionText.text = new StringBuilder()
+                .Append("Plugin Version: ")
+                .Append(Appodeal.getPluginVersion())
+                .Append("\nSDK Version: ")
+                .Append(Appodeal.getNativeSDKVersion())
+#if UNITY_ANDROID
+                .Append("\nBuild Date: ")
+                .Append(Appodeal.getBuildDate().ToString("yyyy-MM-dd HH:mm:ss"))
+#endif
+                .ToString();
         }
 
         private void OnDestroy()
