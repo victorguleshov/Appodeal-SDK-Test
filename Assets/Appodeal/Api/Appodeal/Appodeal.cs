@@ -485,6 +485,11 @@ namespace AppodealAds.Unity.Api
         {
             return getInstance().getUserId();
         }
+        
+        public static DateTime getBuildDate()
+        {
+            return getInstance().getBuildDate();
+        }
 
         /// <summary>Gets active segment id.</summary>
         /// <remarks>See <see href="https://faq.appodeal.com/en/collections/107529-segments"/> for more details.</remarks>

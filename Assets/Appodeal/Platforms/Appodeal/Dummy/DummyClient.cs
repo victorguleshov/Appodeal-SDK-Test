@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
@@ -344,6 +345,12 @@ namespace AppodealAds.Unity.Dummy
         {
             Debug.Log("Call to Appodeal.getUserId on not supported platform. To test advertising, install your application on the Android/iOS device.");
             return string.Empty;
+        }
+        
+        public DateTime getBuildDate()
+        {
+            Debug.Log("Call to Appodeal.getBuildDate on not supported platform. To test advertising, install your application on the Android/iOS device.");
+            return DateTime.MinValue;
         }
 
         public void logEvent(string eventName, Dictionary<string, object> eventParams)

@@ -664,6 +664,12 @@ namespace AppodealAds.Unity.iOS
             return AppodealObjCBridge.AppodealGetVersion();
         }
 
+        public DateTime getBuildDate()
+        {
+            Debug.Log("Not Supported by iOS SDK");
+            return DateTime.MinValue;
+        }
+
         public long getSegmentId()
         {
             return AppodealObjCBridge.AppodealGetSegmentId();

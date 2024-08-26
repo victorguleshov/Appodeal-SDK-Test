@@ -447,6 +447,14 @@ namespace AppodealAds.Unity.Android
         {
             return getAppodealClass().CallStatic<string>("getUserId");
         }
+        
+        public DateTime getBuildDate()
+        {
+            var javaDate = getAppodealClass().CallStatic<AndroidJavaObject>("getBuildDate");
+            var timeInMillis = javaDate.Call<long>("getTime");
+            var date = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return date.AddMilliseconds(timeInMillis);
+        }
 
         public void setInterstitialCallbacks(IInterstitialAdListener listener)
         {

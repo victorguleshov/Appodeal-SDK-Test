@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 using AppodealAds.Unity.Api;
 using ConsentManager;
@@ -62,6 +63,7 @@ namespace AppodealAds.Unity.Common
         void setTriggerOnLoadedOnPrecache(int adTypes, bool onLoadedTriggerBoth);
         void setUserId(string id);
         string getUserId();
+        DateTime getBuildDate();
         long getSegmentId();
         void trackInAppPurchase(double amount, string currency);
         void setInterstitialCallbacks(IInterstitialAdListener listener);
